@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "DOM-based XSS Demo";
+}
+
+<h2>DOM-based XSS Demo</h2>
+
+<p>Enter your name:</p>
+<input type="text" id="nameInput" />
+<button onclick="showName()">Submit</button>
+
+<p id="output"></p>
+
+<script>
+    function showName() {
+        var name = document.getElementById('nameInput').value;
+        document.getElementById('output').innerHTML = 'Hello, ' + name; // Vulnerable to DOM-based XSS
+    }
+</script>

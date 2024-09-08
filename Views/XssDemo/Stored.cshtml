@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Stored XSS Demo";
+}
+
+<h2>Stored XSS Demo</h2>
+
+<form action="/XssDemo/StoreComment" method="post">
+    <label for="comment">Leave a comment:</label>
+    <textarea id="comment" name="comment"></textarea>
+    <input type="submit" value="Submit" />
+</form>
+
+<h3>Comments:</h3>
+<ul>
+    @foreach (var comment in ViewBag.Comments as List<string>)
+    {
+        <li>@Html.Raw(comment)</li> <!-- Vulnerable to Stored XSS -->
+    }
+</ul>

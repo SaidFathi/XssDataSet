@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Reflected XSS Demo";
+}
+
+<h2>Reflected XSS Demo</h2>
+
+<form action="/XssDemo/Reflected" method="get">
+    <label for="input">Enter something:</label>
+    <input type="text" id="input" name="input" />
+    <input type="submit" value="Submit" />
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.Input))
+{
+    <p>You entered: @Html.Raw(ViewBag.Input)</p> <!-- Vulnerable to Reflected XSS -->
+}
